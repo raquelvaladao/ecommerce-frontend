@@ -1,0 +1,39 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card p-4 mt-3">
+    <div class="first d-flex justify-content-between align-items-center mb-2">
+      <div class="info">
+        <span class="d-block name">Obrigado por fazer o pedido.</span>
+        <span class="order">Data - {{ (pedido$ | async)?.dataVenda }}</span>
+      </div>
+      <img src="https://i.imgur.com/NiAVkEw.png" width="40" />
+    </div>
+    <div class="detail">
+      <span class="d-block summery"
+        >Seu pedido foi enviado. O valor total é:</span
+      >
+      <h3>{{ (pedido$ | async)?.total | currency: "BRL":true }}</h3>
+    </div>
+    <hr />
+    <div class="text"><span class="d-block new mb-1">Endereço</span></div>
+    <span class="d-block address mb-3"
+      >Rua - {{ (pedido$ | async)?.endereco?.rua }} | CEP -
+      {{ (pedido$ | async)?.endereco?.cep }}</span
+    >
+    <span class="d-block address mb-3"
+      >Bairro - {{ (pedido$ | async)?.endereco?.bairro }}</span
+    >
+    <span class="d-block address mb-3"
+      >Cidade - {{ (pedido$ | async)?.endereco?.cidade }}</span
+    >
+    <span class="d-block address mb-3"
+      >Estado - {{ (pedido$ | async)?.endereco?.estado }}</span
+    >
+    <div class="money d-flex flex-row mt-2 align-items-center">
+      <img src="https://i.imgur.com/ppwgjMU.png" width="20" />
+      <span class="ml-2">Dinheiro na entrega</span>
+    </div>
+    <a [routerLink]="['/produtos/listar']" class="link-primary">
+      <i class="fas fa-arrow-left"></i> Voltar pros produtos</a
+    >
+  </div>
+</div>

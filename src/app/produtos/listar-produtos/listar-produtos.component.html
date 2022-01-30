@@ -1,0 +1,46 @@
+<div class="container d-flex justify-content-center mt-50 mb-50">
+  <h3 class="display-5 mb-2 text-center">Produtos</h3>
+</div>
+
+<div class="container d-flex justify-content-center mt-50 mb-50">
+  <div class="row">
+    <div *ngFor="let produto of produtos" class="col-md-3 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-img-actions">
+            <img
+              [src]="URL_FOTO + produto.id + '/' + produto.foto"
+              class="card-img img-fluid"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="card-body bg-light text-center">
+          <div class="mb-2">
+            <h6 class="font-weight-semibold mb-2">
+              <a href="#" class="text-default mb-2" data-abc="true">{{
+                produto.nome
+              }}</a>
+            </h6>
+            <a class="text-muted" data-abc="true">{{
+              produto.descricao.length > 20
+                ? (produto.descricao | slice: 0:12) + "..."
+                : produto.descricao
+            }}</a>
+          </div>
+          <h3 class="mb-0 font-weight-semibold">
+            {{ produto.preco | currency: "BRL":true }}
+          </h3>
+
+          <button
+            type="button"
+            (click)="submit(produto.id)"
+            class="btn bg-cart"
+          >
+            <i class="fa fa-cart-plus mr-2"></i> Add ao carrinho
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

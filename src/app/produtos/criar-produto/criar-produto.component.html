@@ -1,0 +1,106 @@
+<div class="container d-flex justify-content-center mt-5 mb-5">
+  <div class="card mb-5">
+    <div class="card-header">Cadastrar produto</div>
+
+    <div class="card-body">
+      <form [formGroup]="form" (submit)="submit()">
+        <div class="mb-3">
+          <label for="foto">Foto</label>
+          <input
+            class="form-control"
+            type="file"
+            name="file"
+            (change)="onFileSelect($event)"
+            required
+          />
+
+          <div *ngIf="errosInput('foto')" class="text-danger">
+            <small>{{ errosInput("foto") }}</small>
+          </div>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill" class="full-width-field">
+            <mat-label>Nome</mat-label>
+            <input
+              matInput
+              placeholder="Nome"
+              formControlName="nome"
+              required
+            />
+            <mat-error *ngIf="form.get('nome')?.invalid">{{
+              errosInput("nome")
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill" class="full-width-field">
+            <mat-label>Descrição</mat-label>
+            <input
+              matInput
+              placeholder="Descrição"
+              formControlName="descricao"
+              required
+            />
+            <mat-error *ngIf="form.get('descricao')?.invalid">{{
+              errosInput("descricao")
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill" class="full-width-field">
+            <mat-label>Selecionar medida</mat-label>
+            <mat-select formControlName="medida" required>
+              <mat-option
+                name="medida"
+                *ngFor="let medida of medidas"
+                [value]="medida"
+                >{{ medida }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Preço</mat-label>
+            <input
+              matInput
+              placeholder="Preço"
+              formControlName="preco"
+              required
+              type="number"
+            />
+            <mat-hint>{{
+              form.get("preco")?.value | currency: "BRL":true
+            }}</mat-hint>
+            <mat-error *ngIf="form.get('preco')?.invalid">{{
+              errosInput("preco")
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Estoque</mat-label>
+            <input
+              matInput
+              placeholder="Estoque"
+              formControlName="estoque"
+              required
+              type="number"
+              min="1"
+            />
+            <mat-error *ngIf="form.get('estoque')?.invalid">{{
+              errosInput("estoque")
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-2">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>

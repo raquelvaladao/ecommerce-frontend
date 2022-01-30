@@ -1,0 +1,88 @@
+<header class="bg-dark py-3 mb-3">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-lg-2">
+        <img src="assets/location.svg" style="width: 250px; height: 250px" />
+      </div>
+      <div class="col-lg-10">
+        <h1 class="display-4 text-white mt-5 mb-2">GFT-Shop App</h1>
+        <div *ngIf="isToken == null">
+          <p class="lead mb-5 text-white">
+            App de consumo da API de produtos. Faça LOGIN ou se REGISTRE para
+            acessar os endpoints.
+          </p>
+        </div>
+        <div *ngIf="isToken != null">
+          <p class="lead mb-5 text-white">App de consumo da API de produtos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div *ngIf="isToken != null" class="album py-2 mb-5 bg-light">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-4">
+        <div
+          [routerLink]="['/produtos/listar']"
+          class="card mb-4 box-shadow shadow p-4 mb-3 bg-white rounded"
+          role="button"
+        >
+          <img
+            src="assets/ver-produto.svg"
+            class="card-img-top"
+            data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+            alt="Thumbnail [100%x225]"
+            style="height: 225px; width: 100%; display: block"
+            data-holder-rendered="true"
+          />
+
+          <div class="card-body">
+            <h3 class="card-title text-center">Veja produtos</h3>
+            <a class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          [routerLink]="['/produtos/criar']"
+          class="card mb-4 box-shadow shadow p-4 mb-3 bg-white rounded"
+        >
+          <img
+            src="assets/comprar-produto.svg"
+            class="card-img-top"
+            data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+            alt="Thumbnail [100%x225]"
+            style="height: 225px; width: 100%; display: block"
+            data-holder-rendered="true"
+          />
+          <div class="card-body">
+            <h3 class="card-title text-center">Crie um produto</h3>
+            <a class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div
+          [routerLink]="['/carrinho/ver']"
+          class="card mb-4 box-shadow shadow p-4 mb-3 bg-white rounded"
+        >
+          <img
+            src="assets/criar-produto.svg"
+            class="card-img-top"
+            data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+            alt="Thumbnail [100%x225]"
+            style="height: 225px; width: 100%; display: block"
+            data-holder-rendered="true"
+          />
+          <div class="card-body">
+            <h4 class="card-title text-center">Ver carrinho</h4>
+            <a class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

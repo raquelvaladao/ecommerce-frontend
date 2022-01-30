@@ -1,0 +1,41 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card">
+    <div class="card-header">Login</div>
+
+    <div class="card-body">
+      <form [formGroup]="form" (submit)="submit()">
+        <div class="mb-2">
+        <mat-form-field appearance="standard" class="full-width-field">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            formControlName="login"
+            required
+          />
+          <mat-error *ngIf="form.get('login')?.invalid">{{
+            errosInput("login")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-2">
+        <mat-form-field appearance="standard" class="full-width-field">
+          <mat-label>Senha</mat-label>
+          <input
+            matInput
+            placeholder="Senha"
+            formControlName="senha"
+            type="password"
+            required
+          />
+          <mat-error *ngIf="form.get('senha')?.invalid">{{
+            errosInput("senha")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+        <button type="submit" class="btn btn-primary mb-3">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
